@@ -1,0 +1,420 @@
+{
+	"info": {
+		"_postman_id": "52ac977d-a426-494a-8b3f-77f701ca51c1",
+		"name": "Trybe Apis",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Token Update\", function () {",
+									"\t\t\t\t\t\t\t    var jsonData = pm.response.json();",
+									"\t\t\t\t\t\t\t    pm.environment.set(\"access_token\", jsonData.access_token);",
+									"\t\t\t\t\t\t\t});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"displayName\" : \"Wilson de Oliviera Junior\",\n\"email\"       : \"wjunior013@gmail.com\",\n\"password\"    : \"1234567\",\n\"image\"       : \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-api}}/user",
+							"host": [
+								"{{url-api}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Token Update\", function () {",
+									"\t\t\t\t\t\t\t    var jsonData = pm.response.json();",
+									"\t\t\t\t\t\t\t    pm.environment.set(\"access_token\", jsonData.access_token);",
+									"\t\t\t\t\t\t\t});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\"       : \"wjunior013@gmail.com\",\n    \"password\"    : \"1234567\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-api}}/login",
+							"host": [
+								"{{url-api}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Token Update\", function () {",
+									"\t\t\t\t\t\t\t    var jsonData = pm.response.json();",
+									"\t\t\t\t\t\t\t    pm.environment.set(\"access_token\", jsonData.access_token);",
+									"\t\t\t\t\t\t\t});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "bearer  {{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url-api}}/logout",
+							"host": [
+								"{{url-api}}"
+							],
+							"path": [
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Get All User",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "bearer  {{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url-api}}/user",
+							"host": [
+								"{{url-api}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "bearer  {{access_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{url-api}}/user/8",
+							"host": [
+								"{{url-api}}"
+							],
+							"path": [
+								"user",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Me",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "bearer  {{access_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{url-api}}/user/me",
+							"host": [
+								"{{url-api}}"
+							],
+							"path": [
+								"user",
+								"me"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Post",
+			"item": [
+				{
+					"name": "Register Post",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Primeiro Teste\",\n    \"content\": \"Primeiro Teste\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-api}}/post",
+							"host": [
+								"{{url-api}}"
+							],
+							"path": [
+								"post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Posts",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "bearer {{access_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{url-api}}/post",
+							"host": [
+								"{{url-api}}"
+							],
+							"path": [
+								"post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Post",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "bearer {{access_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{url-api}}/post/1",
+							"host": [
+								"{{url-api}}"
+							],
+							"path": [
+								"post",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Post",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "bearer {{access_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{url-api}}/post/2",
+							"host": [
+								"{{url-api}}"
+							],
+							"path": [
+								"post",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search Post",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "bearer {{access_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{url-api}}/post/search?q=Ola",
+							"host": [
+								"{{url-api}}"
+							],
+							"path": [
+								"post",
+								"search"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "Ola"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Post",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "bearer {{access_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Primeiro Teste Alterado2\",\n    \"content\": \"Primeiro Teste Alterado2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-api}}/post/1",
+							"host": [
+								"{{url-api}}"
+							],
+							"path": [
+								"post",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
